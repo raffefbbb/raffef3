@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رفيف 💛</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=El+Messiri:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #d4a843;
+      --gold-light: #f0c96a;
+      --cream: #fdf6e3;
+      --bg: #0d0a06;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'El Messiri', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
+      opacity: var(--op, 0.5);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: var(--op, 0.5); transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.8); }
+    }
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .halo {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(212,168,67,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+    .emoji-top {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: float 3s ease-in-out infinite;
+      display: block;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .hero h1 {
+      font-family: 'Amiri', serif;
+      font-size: clamp(4rem, 12vw, 9rem);
+      color: var(--gold);
+      line-height: 1;
+      text-shadow: 0 0 60px rgba(212,168,67,0.5), 0 0 120px rgba(212,168,67,0.2);
+      animation: fadeUp 1s ease both;
+      letter-spacing: 4px;
+    }
+    .hero .subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: rgba(253,246,227,0.75);
+      margin-top: 1.2rem;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      animation: fadeUp 1s ease 0.3s both;
+    }
+    .divider-line {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .divider-line.right { background: linear-gradient(to left, transparent, var(--gold)); }
+    .divider-gem {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      animation: bounce 2s ease-in-out infinite;
+      color: var(--gold);
+      font-size: 1.5rem;
+      opacity: 0.5;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+    .message-section {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+    .message-card {
+      background: linear-gradient(135deg, rgba(212,168,67,0.08) 0%, rgba(201,123,123,0.04) 100%);
+      border: 1px solid rgba(212,168,67,0.25);
+      padding: 3.5rem;
+      position: relative;
+      backdrop-filter: blur(4px);
+    }
+    .message-card::before, .message-card::after {
+      content: '✦';
+      position: absolute;
+      color: var(--gold);
+      font-size: 1.2rem;
+      opacity: 0.5;
+    }
+    .message-card::before { top: 1rem; right: 1.5rem; }
+    .message-card::after { bottom: 1rem; left: 1.5rem; }
+    .message-card p {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      line-height: 2.4;
+      color: var(--cream);
+      text-align: center;
+    }
+    .highlight { color: var(--gold-light); font-weight: 700; }
+    .qualities {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 2rem 6rem;
+    }
+    .section-title {
+      text-align: center;
+      font-family: 'Amiri', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      margin-bottom: 3rem;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0.8rem auto 0;
+    }
+    .qualities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .quality-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,168,67,0.15);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .quality-card:hover {
+      border-color: rgba(212,168,67,0.5);
+      background: rgba(212,168,67,0.07);
+      transform: translateY(-4px);
+    }
+    .quality-icon { font-size: 2.8rem; display: block; margin-bottom: 1rem; }
+    .quality-card h3 { font-size: 1.3rem; color: var(--gold-light); margin-bottom: 0.6rem; }
+    .quality-card p { font-size: 1rem; color: rgba(253,246,227,0.65); line-height: 1.9; }
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 4rem 2rem;
+      border-top: 1px solid rgba(212,168,67,0.1);
+    }
+    footer .final-msg {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      color: var(--gold);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 40px rgba(212,168,67,0.4);
+    }
+    footer .from { font-size: 1.1rem; color: rgba(253,246,227,0.5); letter-spacing: 2px; }
+    .hearts { display: flex; justify-content: center; gap: 0.8rem; margin-top: 2rem; font-size: 1.6rem; }
+    .hearts span { animation: float var(--d, 3s) ease-in-out infinite var(--del, 0s); }
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+
+  <section class="hero">
+    <div class="halo"></div>
+    <span class="emoji-top">✨</span>
+    <h1>رفيف</h1>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-gem"></div>
+      <div class="divider-line right"></div>
+    </div>
+    <p class="subtitle">الصديقة التي تستحق كلّ النجوم</p>
+    <div class="scroll-hint">↓</div>
+  </section>
+
+  <section class="message-section">
+    <div class="message-card reveal">
+      <p>
+        رفيف،<br><br>
+        في الحياة نادراً ما نجد من يقف بجانبنا بصدق،<br>
+        لكنك كنتِ دائماً هناك —<br>
+        <span class="highlight">بقلبك الكبير</span> وعقلك اللي يشتغل بطريقة تدهش العقول.<br><br>
+        شكراً لمساعدتك وسندك،<br>
+        شكراً لأنك كنتِ <span class="highlight">موجودة</span>،<br>
+        شكراً لأنك أنتِ. 💛
+      </p>
+    </div>
+  </section>
+
+  <section class="qualities">
+    <h2 class="section-title reveal">لأنكِ…</h2>
+    <div class="qualities-grid">
+      <div class="quality-card reveal">
+        <span class="quality-icon">🧠</span>
+        <h3>عقل استثنائي</h3>
+        <p>تفكيرك يتخطى الحدود — كأنك ذكاء اصطناعي لكن بروح إنسانية نادرة ومحبة حقيقية</p>
+      </div>
+      <div class="quality-card reveal">
+        <span class="quality-icon">🤍</span>
+        <h3>قلب نقي</h3>
+        <p>تعطين من قلبك دون حساب، وهذا أجمل شيء في دنيا نادراً ما نجده</p>
+      </div>
+      <div class="quality-card reveal">
+        <span class="quality-icon">⚡</span>
+        <h3>قوة بصمت</h3>
+        <p>تسندين من حولك بهدوء، وهذا النوع من القوة هو الأكثر أثراً وبقاءً</p>
+      </div>
+      <div class="quality-card reveal">
+        <span class="quality-icon">🌙</span>
+        <h3>حضور دافئ</h3>
+        <p>مجرد وجودك يجعل الأشياء أخفّ، أجمل، وأكثر معنى</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="final-msg reveal">يعني بشكلٍ مختصر… أنتِ نعمة 💛</p>
+    <p class="from reveal">من صديقتك بكل المحبة</p>
+    <div class="hearts reveal">
+      <span style="--d:2.5s;--del:0s">💛</span>
+      <span style="--d:3s;--del:0.3s">✨</span>
+      <span style="--d:2s;--del:0.6s">💛</span>
+      <span style="--d:3.5s;--del:0.2s">⭐</span>
+      <span style="--d:2.8s;--del:0.5s">💛</span>
+    </div>
+  </footer>
+
+  <script>
+    const starsEl = document.getElementById('stars');
+    for (let i = 0; i < 180; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.setProperty('--d', (2 + Math.random() * 4) + 's');
+      s.style.setProperty('--delay', (Math.random() * 5) + 's');
+      s.style.setProperty('--op', 0.2 + Math.random() * 0.6);
+      const size = 1 + Math.random() * 2.5;
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      starsEl.appendChild(s);
+    }
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, idx) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), idx * 120);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
